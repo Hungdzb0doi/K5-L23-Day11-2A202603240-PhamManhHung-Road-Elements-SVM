@@ -24,21 +24,22 @@ Cách đặt tag ảnh trên bản CVAT này: Chọn công cụ **Tag** ở than
 ## 3. Bảng ca khó
 | Ảnh | Nhãn | Phân vân giữa | Đã chọn | Lý do |
 | --- | --- | --- | --- | --- |
-| A04 | lane (L1) | single hay double | kind = double | Vạch vàng đôi ngăn cách 2 chiều xe chạy, vẽ 1 polyline tâm giữa và chọn kind=double theo guideline. |
-| A05 | lane | vẽ thêm vạch hay không | không vẽ L1/R1 | Phía lề đường chỉ có bờ vỉa hè (`road_curb`), không có vệt sơn phân làn nên tuân thủ không vẽ vạch ảo. |
+| A01, A04 | lane (vạch đôi) | vẽ 1 nét tâm giữa hay vẽ cả 2 nét | vẽ cả 2 nét polyline riêng | Thầy giáo trực tiếp hướng dẫn trên lớp là vạch đôi thì chấm cả 2 nét để mô hình học đủ ranh giới. |
+| A05, A07 | lane | vẽ thêm vạch hay không | không vẽ L1/R1 | Phía lề đường chỉ có bờ vỉa hè (`road_curb`) hoặc cột, không có vệt sơn phân làn nên tuân thủ không vẽ vạch ảo. |
 | B06 | lane | L1 hay other | position = other | Ảnh camera hông trái (`fisheye_left`), theo quy tắc fisheye mọi vạch kẻ làn đều phải mang position = other. |
 
 ## 4. Phiếu QC 1 nhận được
 Bạn kiểm lô của tôi: nguyenduccuong (Nguyễn Đức Cường)  Quyết định nhận được: Rework  
 | Mã lỗi | Số lỗi | Đồng ý? | Đã sửa? |
 | --- | ---: | --- | --- |
-| QC1-05 | 5 | Đồng ý | Đã nhận diện các ca vạch đôi/vạch đứt bị tách ở A01, A04, A06, A08 |
-| QC1-06 | 1 | Đồng ý | Đã nhận diện màu vạch L1 tại A06 (vàng thay vì trắng) |
-| QC1-07 | 2 | Đồng ý | Đã nhận diện area_type alternative ở A04 và bỏ vùng sau hàng cột ở A06 |
-| QC1-08 | 2 | Đồng ý | Đã nhận diện 2 cụm đèn tín hiệu treo dưới cầu ở A06 |
-| QC1-09 | 1 | Đồng ý | Đã nhận diện biển hình thoi vàng thuộc group=warning ở A06 |
-| QC1-10 | 1 | Đồng ý | Đã nhận diện biển ONE WAY trên cột ở A06 |
-| QC1-11 | 2 | Đồng ý | Đã nhận diện 2 biển kiểm tra edge_zone ở B03 |
+| QC1-05 | 5 | Không đồng ý | Thầy giáo hướng dẫn trực tiếp trên lớp là vạch đôi thì chấm cả 2 vạch (2 polyline riêng), nên việc có 2 polyline cùng position là làm theo đúng chỉ đạo của thầy, không phải lỗi tách vạch. |
+| QC1-02 | 1 | Không đồng ý | Thực tế trên ảnh (như A05, A06, A07) không có vạch sơn phân làn bên lề mà chỉ có vỉa hè/hàng cột, theo guideline không vẽ vạch ảo và được miễn trừ. |
+| QC1-06 | 1 | Đồng ý | Tiếp thu nhận xét về màu vạch L1 tại A06. |
+| QC1-07 | 2 | Đồng ý | Tiếp thu nhận xét về area_type alternative ở A04 và bỏ vùng sau hàng cột ở A06. |
+| QC1-08 | 2 | Đồng ý | Tiếp thu nhận xét về 2 cụm đèn tín hiệu treo dưới cầu ở A06. |
+| QC1-09 | 1 | Đồng ý | Tiếp thu nhận xét về biển hình thoi vàng thuộc group=warning ở A06. |
+| QC1-10 | 1 | Đồng ý | Tiếp thu nhận xét về biển ONE WAY trên cột ở A06. |
+| QC1-11 | 2 | Đồng ý | Tiếp thu nhận xét về 2 biển kiểm tra edge_zone ở B03. |
 
 ## 5. Kiểm file export
 | File | Mở lại được? | Số shape ảnh 1 (job / file) | Số shape ảnh 2 (job / file) | Tag camera có trong XML? |
